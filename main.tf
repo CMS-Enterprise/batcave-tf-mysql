@@ -7,15 +7,15 @@ module "aurora" {
   engine_version = var.engine_version
   instances = {
     1 = {
-      instance_class      = "db.r5.xlarge"
+      instance_class      = var.db_instance_class
       publicly_accessible = var.publicly_accessible
     }
   }
 
   vpc_id                  = var.vpc_id
   subnets                 = var.subnets
-  create_db_subnet_group  = true
-  create_security_group   = true
+  create_db_subnet_group  = var.create_db_subnet_group
+  create_security_group   = var.create_security_group
   allowed_security_groups = var.allowed_security_groups
   security_group_egress_rules = {
     to_cidrs = {
@@ -24,17 +24,17 @@ module "aurora" {
     }
   }
 
-  iam_database_authentication_enabled = true
+  iam_database_authentication_enabled = var.iam_database_authentication_enabled
   master_username                     = var.master_username
   create_random_password              = true
   database_name                       = var.database_name
 
-  apply_immediately   = true
-  skip_final_snapshot = false
+  apply_immediately   = var.apply_immediately
+  skip_final_snapshot = var.skip_final_snapshot
 
   db_parameter_group_name         = aws_db_parameter_group.db_parameter_group.id
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.db_cluster_parameter_group.id
-  enabled_cloudwatch_logs_exports = ["general"]
+  enabled_cloudwatch_logs_exports = var.enabled_cloudwatch_logs_exports
 
   tags = var.tags
 }
@@ -61,6 +61,8 @@ resource "aws_route53_record" "www" {
 }
 
 
+
+### TODO: I don't think the below rules actually do anything
 # RDS egress rule for cluster_security_group
 resource "aws_security_group_rule" "db-egress-cluster_security_group" {
   type                     = "egress"
@@ -72,6 +74,7 @@ resource "aws_security_group_rule" "db-egress-cluster_security_group" {
   security_group_id        = var.cluster_security_group_id
 }
 
+### TODO: I don't think the below rules actually do anything
 # RDS egress rule for worker_security_group
 resource "aws_security_group_rule" "db-egress-worker_security_group" {
   type                     = "egress"
@@ -83,6 +86,7 @@ resource "aws_security_group_rule" "db-egress-worker_security_group" {
   security_group_id        = var.worker_security_group_id
 }
 
+### TODO: I don't think the below rules actually do anything
 # RDS egress rule for cluster_primary_security_group
 resource "aws_security_group_rule" "db-egress-cluster_primary_security_group" {
   type                     = "egress"
