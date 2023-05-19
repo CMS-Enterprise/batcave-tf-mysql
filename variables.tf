@@ -18,7 +18,7 @@ variable "vpc_id" {}
 variable "subnets" {
   type = list(string)
 }
-variable "db_instance_class" {
+variable "instance_class" {
   type    = string
   default = "db.r5.xlarge"
 }
@@ -30,6 +30,7 @@ variable "allowed_security_groups" {
 variable "master_username" {}
 variable "database_name" {}
 variable "tags" {
+  type    = map(string)
   default = {
     Owner = "Batcave"
   }

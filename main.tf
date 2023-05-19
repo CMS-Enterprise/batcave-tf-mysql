@@ -7,7 +7,7 @@ module "aurora" {
   engine_version = var.engine_version
   instances = {
     1 = {
-      instance_class      = var.db_instance_class
+      instance_class      = var.instance_class
       publicly_accessible = var.publicly_accessible
     }
   }
