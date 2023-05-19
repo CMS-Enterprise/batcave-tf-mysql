@@ -31,6 +31,7 @@ module "aurora" {
 
   apply_immediately   = var.apply_immediately
   skip_final_snapshot = var.skip_final_snapshot
+  snapshot_identifier = var.snapshot_identifier
 
   db_parameter_group_name         = aws_db_parameter_group.db_parameter_group.id
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.db_cluster_parameter_group.id

@@ -68,3 +68,9 @@ variable "iam_database_authentication_enabled" {
   type    = bool
   default = true
 }
+
+variable "snapshot_identifier" {
+  default = null
+  type = string
+  description = "If specified creates this database from a snapshot. Default is null.  Be warned that modifying this value on an already created database _WILL_ destroy/recreate the whole cluster."
+}
