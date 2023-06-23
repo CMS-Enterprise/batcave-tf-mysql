@@ -45,12 +45,34 @@ resource "aws_db_parameter_group" "db_parameter_group" {
   family      = "aurora-mysql8.0"
   description = "${var.name}-aurora-db-mysql-parameter-group"
   tags        = var.tags
+  dynamic "parameter" {
+    for_each = var.db_parameters
+    content {
+      name  = parameter.value.name
+      value = parameter.value.value
+    }
+  }
+
 }
 resource "aws_rds_cluster_parameter_group" "db_cluster_parameter_group" {
   name        = "${var.name}-aurora-mysql-cluster-parameter-group"
   family      = "aurora-mysql8.0"
   description = "${var.name}-aurora-mysql-cluster-parameter-group"
   tags        = var.tags
+  dynamic "parameter" {
+    for_each = var.db_cluster_parameters
+    content {
+      name  = parameter.value.name
+      value = parameter.value.value
+    }
+  }  
+}
+
+resource "aws_rds_cluster_role_association" "role_association" {
+  count                 = length(var.iam_roles)
+  db_cluster_identifier = module.aurora.cluster_id
+  role_arn              = var.iam_roles[count.index].role_arn
+  feature_name          = var.iam_roles[count.index].feature_name
 }
 
 resource "aws_route53_record" "www" {

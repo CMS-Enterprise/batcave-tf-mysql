@@ -74,3 +74,24 @@ variable "snapshot_identifier" {
   type = string
   description = "If specified creates this database from a snapshot. Default is null.  Be warned that modifying this value on an already created database _WILL_ destroy/recreate the whole cluster."
 }
+
+variable "db_parameters" {
+  description = "A list of DB parameters (map) to apply"
+  type        = list(map(string))
+  default     = []
+}
+
+variable "db_cluster_parameters" {
+  description = "A list of DB cluster parameters (map) to apply"
+  type        = list(map(string))
+  default     = []
+}
+
+variable "iam_roles" {
+  description = "Map of IAM roles and supported feature names to associate with the cluster"
+  type        = list(object({
+    role_arn           = string
+    feature_name       = optional(string, "")
+  }))
+  default     = []
+}
