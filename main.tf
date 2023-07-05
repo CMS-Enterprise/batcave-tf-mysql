@@ -38,6 +38,7 @@ module "aurora" {
   enabled_cloudwatch_logs_exports = var.enabled_cloudwatch_logs_exports
 
   tags = var.tags
+  copy_tags_to_snapshot = true
 }
 
 resource "aws_db_parameter_group" "db_parameter_group" {
