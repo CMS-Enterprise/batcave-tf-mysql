@@ -5,6 +5,7 @@ module "aurora" {
   name           = var.name
   engine         = var.engine
   engine_version = var.engine_version
+  auto_minor_version_upgrade = var.auto_minor_version_upgrade
   instances = {
     1 = {
       instance_class      = var.instance_class
