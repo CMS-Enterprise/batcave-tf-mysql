@@ -2,9 +2,9 @@ module "aurora" {
   source  = "terraform-aws-modules/rds-aurora/aws"
   version = "6.1.4"
 
-  name           = var.name
-  engine         = var.engine
-  engine_version = var.engine_version
+  name                       = var.name
+  engine                     = var.engine
+  engine_version             = var.engine_version
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
   instances = {
     1 = {
@@ -38,7 +38,7 @@ module "aurora" {
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.db_cluster_parameter_group.id
   enabled_cloudwatch_logs_exports = var.enabled_cloudwatch_logs_exports
 
-  tags = var.tags
+  tags                  = var.tags
   copy_tags_to_snapshot = true
 }
 
