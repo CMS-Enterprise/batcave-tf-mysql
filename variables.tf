@@ -1,14 +1,18 @@
 variable "name" {}
+
 variable "engine" {
   default = "aurora-mysql"
 }
+
 variable "engine_version" {
-  default = "8.0.mysql_aurora.3.02.0"
+  default = "8.0"
 }
+
 variable "auto_minor_version_upgrade" {
   type    = bool
-  default = false
+  default = true
 }
+
 variable "publicly_accessible" {
   default = "false"
 }
@@ -18,6 +22,7 @@ variable "vpc_id" {}
 variable "subnets" {
   type = list(string)
 }
+
 variable "instance_class" {
   type    = string
   default = "db.r5.xlarge"
@@ -28,15 +33,18 @@ variable "allowed_security_groups" {
 }
 
 variable "master_username" {}
+
 variable "database_name" {}
+
 variable "tags" {
-  type    = map(string)
+  type = map(string)
   default = {
     Owner = "Batcave"
   }
 }
 
 variable "route53_zone_id" {}
+
 variable "route53_record_name" {}
 
 variable "worker_security_group_id" {}
@@ -70,7 +78,7 @@ variable "iam_database_authentication_enabled" {
 }
 
 variable "snapshot_identifier" {
-  default = null
-  type = string
+  default     = null
+  type        = string
   description = "If specified creates this database from a snapshot. Default is null.  Be warned that modifying this value on an already created database _WILL_ destroy/recreate the whole cluster."
 }
