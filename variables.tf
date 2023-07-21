@@ -61,7 +61,7 @@ variable "skip_final_snapshot" {
 
 variable "enabled_cloudwatch_logs_exports" {
   type    = list(any)
-  default = ["audit", "error", "general", "slowquery"]
+  default = ["audit","error","general","slowquery"]
 }
 variable "create_db_subnet_group" {
   type    = bool
