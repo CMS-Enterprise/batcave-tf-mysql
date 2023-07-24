@@ -24,6 +24,7 @@ module "aurora" {
       description = "Egress to Internet"
     }
   }
+  allowed_cidr_blocks = var.security_group_allowed_cidrs
 
   iam_database_authentication_enabled = var.iam_database_authentication_enabled
   master_username                     = var.master_username
@@ -62,8 +63,6 @@ resource "aws_route53_record" "www" {
   ttl     = "60"
   records = ["${module.aurora.cluster_endpoint}"]
 }
-
-
 
 ### TODO: I don't think the below rules actually do anything
 # RDS egress rule for cluster_security_group
