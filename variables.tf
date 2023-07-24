@@ -61,7 +61,7 @@ variable "skip_final_snapshot" {
 
 variable "enabled_cloudwatch_logs_exports" {
   type    = list(any)
-  default = ["audit","error","general","slowquery"]
+  default = ["audit", "error", "general", "slowquery"]
 }
 variable "create_db_subnet_group" {
   type    = bool
@@ -70,6 +70,11 @@ variable "create_db_subnet_group" {
 variable "create_security_group" {
   type    = bool
   default = true
+}
+
+variable "security_group_allowed_cidrs" {
+  type    = list(string)
+  default = []
 }
 
 variable "iam_database_authentication_enabled" {
