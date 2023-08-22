@@ -87,3 +87,9 @@ variable "snapshot_identifier" {
   type        = string
   description = "If specified creates this database from a snapshot. Default is null.  Be warned that modifying this value on an already created database _WILL_ destroy/recreate the whole cluster."
 }
+
+variable "backup_retention_period" {
+  description = "The days to retain backups for. Default `7`"
+  type        = number
+  default     = 35
+}
