@@ -41,6 +41,7 @@ module "aurora" {
 
   tags                  = var.tags
   copy_tags_to_snapshot = true
+  backup_retention_period = var.backup_retention_period
 }
 
 resource "aws_db_parameter_group" "db_parameter_group" {
