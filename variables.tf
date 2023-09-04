@@ -101,7 +101,7 @@ variable "db_parameter_group_parameters" {
     name  = "general_log"
     value = "1" 
     }, {
-    name  = "group_concat_max_length"
+    name  = "group_concat_max_len"
     value = "4096"
     }, {
     name  = "log_bin_trust_function_creators"
