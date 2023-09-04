@@ -93,3 +93,61 @@ variable "backup_retention_period" {
   type        = number
   default     = 35
 }
+
+variable "db_parameter_group_parameters" {
+  type = list(map(string))
+  
+  default = [
+    {
+      name  = "general_log"
+      value = "1" 
+      }, {
+      name  = "group_concat_max_length"
+      value = "4096"
+      }, {
+      name  = "log_bin_trust_function_creators"
+      value = "1"
+      }, {
+      name  = "max_allowed_packet"
+      value = "1073741824"
+      }, {
+      name  = "transaction_isolation"
+      value = "READ-COMMITTED"
+      }, {
+      name  = "validate-password"
+      value = "ON"
+      }, {
+      name  = "validate_password_length"
+      value = "14"
+      }, {
+      name  = "validate_password_mixed_case_count"
+      value = "2"
+      }, {
+      name  = "validate_password_number_count"
+      value = "1"
+      }, {
+      name  = "validate_password_policy"
+      value = "MEDIUM"
+      }, {
+      name  = "validate_password_special_character_count"
+      value = "1"
+    }
+  ]
+}
+
+variable "db_cluster_parameter_group_parameters" {
+  type = list(map(string))
+
+  default = [{
+    name  = "default_password_lifetime"
+    # value = "60"	# Enable this when password rotation has been figured out
+    value = "0"
+    }, {
+    name  = "group_concat_max_len"
+    value = "4096"
+    }, {
+    name  = "validate_password_special_char_count"
+    value = "1"
+    }
+  ]
+}
