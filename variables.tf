@@ -119,12 +119,14 @@ variable "db_parameter_group_parameters" {
 variable "db_cluster_parameter_group_parameters" {
   type = list(map(string))
 
-  default = [{
-    name  = "default_password_lifetime"
-    value = "60"
-    }, {
-    name  = "group_concat_max_len"
-    value = "4096"
+  default = [
+#     {
+#       name  = "default_password_lifetime"
+#       value = "60"
+#     },
+    {
+      name  = "group_concat_max_len"
+      value = "4096"
     }
   ]
 }
