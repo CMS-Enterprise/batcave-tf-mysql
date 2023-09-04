@@ -121,8 +121,7 @@ variable "db_cluster_parameter_group_parameters" {
 
   default = [{
     name  = "default_password_lifetime"
-    # value = "60"	# Enable this when password rotation has been figured out
-    value = "0"
+    value = "60"
     }, {
     name  = "group_concat_max_len"
     value = "4096"
