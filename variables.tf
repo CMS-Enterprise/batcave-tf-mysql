@@ -112,21 +112,6 @@ variable "db_parameter_group_parameters" {
     }, {
     name  = "transaction_isolation"
     value = "READ-COMMITTED"
-    }, {
-    name  = "validate-password"
-    value = "ON"
-    }, {
-    name  = "validate_password_length"
-    value = "14"
-    }, {
-    name  = "validate_password_mixed_case_count"
-    value = "2"
-    }, {
-    name  = "validate_password_policy"
-    value = "MEDIUM"
-    }, {
-    name  = "validate_password_special_character_count"
-    value = "1"
     }
   ]
 }
