@@ -130,3 +130,8 @@ variable "db_cluster_parameter_group_parameters" {
     }
   ]
 }
+
+variables "ca_certificate_identifier" {
+  description = "Specifies the identifier of the CA certificate for the DB instance"
+  type        = string
+}
