@@ -30,7 +30,7 @@ module "aurora" {
   master_username                     = var.master_username
   create_random_password              = true
   database_name                       = var.database_name
-  ca_certificate_identifier           = var.ca_certificate_identifier
+  ca_cert_identifier                  = var.ca_cert_identifier
 
   apply_immediately   = var.apply_immediately
   skip_final_snapshot = var.skip_final_snapshot
