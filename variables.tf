@@ -120,10 +120,6 @@ variable "db_cluster_parameter_group_parameters" {
   type = list(map(string))
 
   default = [
-#     {
-#       name  = "default_password_lifetime"
-#       value = "60"
-#     },
     {
       name  = "group_concat_max_len"
       value = "4096"
@@ -134,4 +130,14 @@ variable "db_cluster_parameter_group_parameters" {
 variable "ca_cert_identifier" {
   description = "Specifies the identifier of the CA certificate for the DB instance"
   type        = string
+}
+
+variable "restore_option" {
+  description = "Specify the restore method: either 'snapshot' or 'point_in_time'. Default is none."
+  type        = string
+  default     = ""  # By default, it's empty, meaning no restore option is chosen.
+  validation {
+    condition     = can(regex("^(snapshot|point_in_time|)$", var.restore_option))
+    error_message = "The restore_option must be either 'snapshot', 'point_in_time', or an empty string."
+  }
 }

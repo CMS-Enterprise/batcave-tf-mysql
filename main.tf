@@ -32,9 +32,10 @@ module "aurora" {
   database_name                       = var.database_name
   ca_cert_identifier                  = var.ca_cert_identifier
 
-  apply_immediately   = var.apply_immediately
-  skip_final_snapshot = var.skip_final_snapshot
-  snapshot_identifier = var.snapshot_identifier
+  apply_immediately        = var.apply_immediately
+  skip_final_snapshot      = var.skip_final_snapshot
+  snapshot_identifier      = var.restore_option == "snapshot" ? var.snapshot_identifier : null
+  restore_to_point_in_time = var.restore_option == "point_in_time" ? var.restore_from_point_in_time : null
 
   db_parameter_group_name         = aws_db_parameter_group.db_parameter_group.id
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.db_cluster_parameter_group.id
