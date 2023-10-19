@@ -93,3 +93,45 @@ variable "backup_retention_period" {
   type        = number
   default     = 35
 }
+
+variable "db_parameter_group_parameters" {
+  type = list(map(string))
+  
+  default = [{
+    name  = "general_log"
+    value = "1" 
+    }, {
+    name  = "group_concat_max_len"
+    value = "4096"
+    }, {
+    name  = "log_bin_trust_function_creators"
+    value = "1"
+    }, {
+    name  = "max_allowed_packet"
+    value = "1073741824"
+    }, {
+    name  = "transaction_isolation"
+    value = "READ-COMMITTED"
+    }
+  ]
+}
+
+variable "db_cluster_parameter_group_parameters" {
+  type = list(map(string))
+
+  default = [
+#     {
+#       name  = "default_password_lifetime"
+#       value = "60"
+#     },
+    {
+      name  = "group_concat_max_len"
+      value = "4096"
+    }
+  ]
+}
+
+variable "ca_cert_identifier" {
+  description = "Specifies the identifier of the CA certificate for the DB instance"
+  type        = string
+}

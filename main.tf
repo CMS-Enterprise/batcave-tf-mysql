@@ -30,6 +30,7 @@ module "aurora" {
   master_username                     = var.master_username
   create_random_password              = true
   database_name                       = var.database_name
+  ca_cert_identifier                  = var.ca_cert_identifier
 
   apply_immediately   = var.apply_immediately
   skip_final_snapshot = var.skip_final_snapshot
@@ -49,12 +50,28 @@ resource "aws_db_parameter_group" "db_parameter_group" {
   family      = "aurora-mysql8.0"
   description = "${var.name}-aurora-db-mysql-parameter-group"
   tags        = var.tags
+  dynamic "parameter" {
+    for_each = var.db_parameter_group_parameters
+    content {
+      name  = parameter.value["name"]
+      value = parameter.value["value"]
+    }
+  }
 }
+
+
 resource "aws_rds_cluster_parameter_group" "db_cluster_parameter_group" {
   name        = "${var.name}-aurora-mysql-cluster-parameter-group"
   family      = "aurora-mysql8.0"
   description = "${var.name}-aurora-mysql-cluster-parameter-group"
   tags        = var.tags
+  dynamic "parameter" {
+    for_each = var.db_cluster_parameter_group_parameters
+    content {
+      name  = parameter.value["name"]
+      value = parameter.value["value"]
+    }
+  }
 }
 
 resource "aws_route53_record" "www" {
