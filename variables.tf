@@ -132,6 +132,12 @@ variable "ca_cert_identifier" {
   type        = string
 }
 
+variable "restore_to_point_in_time" {
+  description = "Point in time to restore, example format: 2023-10-18T23:45:00Z"
+  type        = map(string)
+  default     = {} # by default, no restoration
+}
+
 variable "restore_option" {
   description = "Specify the restore method: either 'snapshot' or 'point_in_time'. Default is none."
   type        = string
