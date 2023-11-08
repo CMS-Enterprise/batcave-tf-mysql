@@ -49,7 +49,7 @@ No requirements.
 | <a name="input_master_username"></a> [master\_username](#input\_master\_username) | n/a | `any` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | n/a | `any` | n/a | yes |
 | <a name="input_publicly_accessible"></a> [publicly\_accessible](#input\_publicly\_accessible) | n/a | `string` | `"false"` | no |
-| <a name="input_route53_record_names"></a> [route53\_record\_names](#input\_route53\_record\_names) | n/a | `any` | n/a | yes |
+| <a name="input_route53_record_name"></a> [route53\_record\_name](#input\_route53\_record\_name) | n/a | `any` | n/a | yes |
 | <a name="input_route53_zone_id"></a> [route53\_zone\_id](#input\_route53\_zone\_id) | n/a | `any` | n/a | yes |
 | <a name="input_security_group_allowed_cidrs"></a> [security\_group\_allowed\_cidrs](#input\_security\_group\_allowed\_cidrs) | n/a | `list(string)` | `[]` | no |
 | <a name="input_skip_final_snapshot"></a> [skip\_final\_snapshot](#input\_skip\_final\_snapshot) | n/a | `bool` | `false` | no |

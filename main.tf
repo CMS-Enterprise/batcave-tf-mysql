@@ -76,8 +76,7 @@ resource "aws_rds_cluster_parameter_group" "db_cluster_parameter_group" {
 
 resource "aws_route53_record" "www" {
   zone_id = var.route53_zone_id
-  count   = length(var.route53_record_names)
-  name    = var.route53_record_names[count.index]
+  name    = var.route53_record_name
   type    = "CNAME"
   ttl     = "60"
   records = ["${module.aurora.cluster_endpoint}"]
