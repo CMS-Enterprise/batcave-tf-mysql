@@ -87,7 +87,7 @@ resource "aws_route53_record" "www-reader" {
   name    = var.route53_record_name
   type    = "CNAME"
   ttl     = "60"
-  records = ["${module.aurora.cluster_endpoint}"]
+  records = ["${module.aurora.cluster_reader_endpoint}"]
 }
 
 ### TODO: I don't think the below rules actually do anything
