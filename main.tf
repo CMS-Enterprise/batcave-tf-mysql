@@ -125,12 +125,3 @@ resource "aws_security_group_rule" "db-egress-cluster_primary_security_group" {
   source_security_group_id = module.aurora.security_group_id
   security_group_id        = var.cluster_primary_security_group_id
 }
-
-resource "aws_secretsmanager_secret_rotation" "example" {
-  secret_id           = "arn:aws:secretsmanager:us-east-1:190002946201:secret:rds/eppe/impl/creds-yuGXqI"
-  # rotation_lambda_arn = aws_lambda_function.example.arn
-
-  rotation_rules {
-    automatically_after_days = 30
-  }
-}
