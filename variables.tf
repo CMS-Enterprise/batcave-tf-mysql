@@ -45,7 +45,8 @@ variable "tags" {
 
 variable "route53_zone_id" {}
 
-variable "route53_record_name" {
+variable "route53_record_names" {
+  type = list(string)
 }
 
 variable "worker_security_group_id" {}
