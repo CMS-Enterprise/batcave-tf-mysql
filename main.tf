@@ -127,7 +127,7 @@ resource "aws_security_group_rule" "db-egress-cluster_primary_security_group" {
 }
 
 resource "aws_secretsmanager_secret_rotation" "example" {
-  secret_id           = aws_secretsmanager_secret.example.id
+  secret_id           = "arn:aws:secretsmanager:us-east-1:190002946201:secret:rds/eppe/impl/creds-yuGXqI"
   # rotation_lambda_arn = aws_lambda_function.example.arn
 
   rotation_rules {
