@@ -96,10 +96,10 @@ variable "backup_retention_period" {
 
 variable "db_parameter_group_parameters" {
   type = list(map(string))
-  
+
   default = [{
     name  = "general_log"
-    value = "1" 
+    value = "1"
     }, {
     name  = "group_concat_max_len"
     value = "4096"
@@ -120,10 +120,10 @@ variable "db_cluster_parameter_group_parameters" {
   type = list(map(string))
 
   default = [
-#     {
-#       name  = "default_password_lifetime"
-#       value = "60"
-#     },
+    #     {
+    #       name  = "default_password_lifetime"
+    #       value = "60"
+    #     },
     {
       name  = "group_concat_max_len"
       value = "4096"
