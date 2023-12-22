@@ -1,3 +1,13 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.61.0"
+    }
+  }
+  required_version = ">= 1.2"
+}
+
 module "aurora" {
   source  = "terraform-aws-modules/rds-aurora/aws"
   version = "6.1.4"
@@ -40,8 +50,8 @@ module "aurora" {
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.db_cluster_parameter_group.id
   enabled_cloudwatch_logs_exports = var.enabled_cloudwatch_logs_exports
 
-  tags                  = var.tags
-  copy_tags_to_snapshot = true
+  tags                    = var.tags
+  copy_tags_to_snapshot   = true
   backup_retention_period = var.backup_retention_period
 }
 
@@ -79,7 +89,7 @@ resource "aws_route53_record" "www" {
   name    = var.route53_record_name
   type    = "CNAME"
   ttl     = "60"
-  records = ["${module.aurora.cluster_endpoint}"]
+  records = [module.aurora.cluster_endpoint]
 }
 
 ### TODO: I don't think the below rules actually do anything

@@ -1,11 +1,15 @@
-variable "name" {}
+variable "name" {
+  type = string
+}
 
 variable "engine" {
   default = "aurora-mysql"
+  type    = string
 }
 
 variable "engine_version" {
   default = "8.0"
+  type    = string
 }
 
 variable "auto_minor_version_upgrade" {
@@ -15,9 +19,12 @@ variable "auto_minor_version_upgrade" {
 
 variable "publicly_accessible" {
   default = "false"
+  type    = string
 }
 
-variable "vpc_id" {}
+variable "vpc_id" {
+  type = string
+}
 
 variable "subnets" {
   type = list(string)
@@ -32,9 +39,13 @@ variable "allowed_security_groups" {
   type = list(string)
 }
 
-variable "master_username" {}
+variable "master_username" {
+  type = string
+}
 
-variable "database_name" {}
+variable "database_name" {
+  type = string
+}
 
 variable "tags" {
   type = map(string)
@@ -43,13 +54,23 @@ variable "tags" {
   }
 }
 
-variable "route53_zone_id" {}
+variable "route53_zone_id" {
+  type = string
+}
 
-variable "route53_record_name" {}
+variable "route53_record_name" {
+  type = string
+}
 
-variable "worker_security_group_id" {}
-variable "cluster_security_group_id" {}
-variable "cluster_primary_security_group_id" {}
+variable "worker_security_group_id" {
+  type = string
+}
+variable "cluster_security_group_id" {
+  type = string
+}
+variable "cluster_primary_security_group_id" {
+  type = string
+}
 variable "apply_immediately" {
   type    = bool
   default = false
@@ -96,10 +117,10 @@ variable "backup_retention_period" {
 
 variable "db_parameter_group_parameters" {
   type = list(map(string))
-  
+
   default = [{
     name  = "general_log"
-    value = "1" 
+    value = "1"
     }, {
     name  = "group_concat_max_len"
     value = "4096"
@@ -120,10 +141,10 @@ variable "db_cluster_parameter_group_parameters" {
   type = list(map(string))
 
   default = [
-#     {
-#       name  = "default_password_lifetime"
-#       value = "60"
-#     },
+    #     {
+    #       name  = "default_password_lifetime"
+    #       value = "60"
+    #     },
     {
       name  = "group_concat_max_len"
       value = "4096"
