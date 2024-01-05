@@ -84,7 +84,7 @@ resource "aws_route53_record" "www-writer" {
 
 resource "aws_route53_record" "www-reader" {
   zone_id = var.route53_zone_id
-  name    = var.route53_record_names[1]
+  name    = var.route53_record_names[1] == null ? "" : var.route53_record_names[1]
   type    = "CNAME"
   ttl     = "60"
   records = ["${module.aurora.cluster_reader_endpoint}"]
