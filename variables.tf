@@ -133,7 +133,9 @@ variable "db_parameter_group_parameters" {
     }, {
     name  = "transaction_isolation"
     value = "READ-COMMITTED"
-    }
+    }, {
+    name  = "time_zone"
+    value = "US/Eastern"
   ]
 }
 
