@@ -136,6 +136,7 @@ variable "db_parameter_group_parameters" {
     }, {
     name  = "time_zone"
     value = "US/Eastern"
+    }
   ]
 }
 
