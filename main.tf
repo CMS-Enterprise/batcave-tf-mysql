@@ -16,7 +16,18 @@ module "aurora" {
   engine                     = var.engine
   engine_version             = var.engine_version
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
-  instances = {
+
+  instances = var.create_reader_instance ? {
+    1 = {
+      instance_class      = var.instance_class
+      publicly_accessible = var.publicly_accessible
+    },
+    2 = {
+      instance_class      = var.replica_instance_class
+      publicly_accessible = var.publicly_accessible_replica
+      replica             = true
+    }
+  } : {
     1 = {
       instance_class      = var.instance_class
       publicly_accessible = var.publicly_accessible

@@ -22,6 +22,11 @@ variable "publicly_accessible" {
   type    = string
 }
 
+variable "publicly_accessible_replica" {
+  default = "false"
+  type    = string
+}
+
 variable "vpc_id" {
   type = string
 }
@@ -31,6 +36,11 @@ variable "subnets" {
 }
 
 variable "instance_class" {
+  type    = string
+  default = "db.r5.xlarge"
+}
+
+variable "replica_instance_class" {
   type    = string
   default = "db.r5.xlarge"
 }
@@ -91,6 +101,11 @@ variable "create_db_subnet_group" {
 variable "create_security_group" {
   type    = bool
   default = true
+}
+
+variable "create_reader_instance" {
+  type    = bool
+  default = false
 }
 
 variable "security_group_allowed_cidrs" {
