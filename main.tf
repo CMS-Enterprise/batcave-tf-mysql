@@ -12,10 +12,13 @@ module "aurora" {
   source  = "terraform-aws-modules/rds-aurora/aws"
   version = "6.1.4"
 
-  name                       = var.name
-  engine                     = var.engine
-  engine_version             = var.engine_version
-  auto_minor_version_upgrade = var.auto_minor_version_upgrade
+  name                                  = var.name
+  engine                                = var.engine
+  engine_version                        = var.engine_version
+  auto_minor_version_upgrade            = var.auto_minor_version_upgrade
+  performance_insights_enabled          = var.performance_insights_enabled
+  performance_insights_kms_key_id       = var.performance_insights_kms_key_id
+  performance_insights_retention_period = var.performance_insights_retention_period
   instances = {
     1 = {
       instance_class      = var.instance_class

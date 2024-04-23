@@ -122,6 +122,12 @@ variable "db_parameter_group_parameters" {
     name  = "general_log"
     value = "1"
     }, {
+    name  = "slow_query_log"
+    value = "1"
+    }, {
+    name  = "long_query_time"
+    value = "2"
+    }, {
     name  = "group_concat_max_len"
     value = "4096"
     }, {
@@ -156,4 +162,22 @@ variable "ca_cert_identifier" {
   description = "Specifies the identifier of the CA certificate for the DB instance"
   type        = string
   default     = "rds-ca-rsa2048-g1"
+}
+
+variable "performance_insights_enabled" {
+  description = "Specifies whether Performance Insights is enabled or not"
+  type        = bool
+  default     = null
+}
+
+variable "performance_insights_kms_key_id" {
+  description = "The ARN for the KMS key to encrypt Performance Insights data"
+  type        = string
+  default     = null
+}
+
+variable "performance_insights_retention_period" {
+  description = "Amount of time in days to retain Performance Insights data. Either 7 (7 days) or 731 (2 years)"
+  type        = number
+  default     = null
 }
