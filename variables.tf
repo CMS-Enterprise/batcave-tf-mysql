@@ -126,7 +126,7 @@ variable "db_parameter_group_parameters" {
     value = "1"
     }, {
     name  = "long_query_time"
-    value = "2"
+    value = "10"
     }, {
     name  = "group_concat_max_len"
     value = "4096"
