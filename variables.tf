@@ -157,3 +157,29 @@ variable "ca_cert_identifier" {
   type        = string
   default     = "rds-ca-rsa2048-g1"
 }
+
+variable "security_group_egress_rules_cidr_blocks" {
+  description = "egress cidr blocks"
+  type        = list(any)
+  default     = ["0.0.0.0/0"]
+
+}
+
+variable "security_group_egress_rules_cidr_blocks_description" {
+  description = "egress cidr blocks description"
+  type        = string
+  default     = "Egress to Internet"
+}
+
+variable "db_parameter_group_family" {
+  description = "db parameter group family"
+  type        = string
+  default     = "aurora-mysql8.0" 
+}
+
+variable "db_cluster_parameter_group_family" {
+  description = "db parameter group family"
+  type        = string
+  default     = "aurora-mysql8.0" 
+}
+
