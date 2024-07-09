@@ -56,20 +56,25 @@ variable "tags" {
 
 variable "route53_zone_id" {
   type = string
+  default = ""
 }
 
 variable "route53_record_name" {
   type = string
+  default = ""
 }
 
 variable "worker_security_group_id" {
   type = string
+  default = ""
 }
 variable "cluster_security_group_id" {
   type = string
+  default = ""
 }
 variable "cluster_primary_security_group_id" {
   type = string
+  default = ""
 }
 variable "apply_immediately" {
   type    = bool
