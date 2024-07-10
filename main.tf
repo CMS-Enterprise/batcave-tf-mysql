@@ -83,3 +83,47 @@ resource "aws_rds_cluster_parameter_group" "db_cluster_parameter_group" {
     }
   }
 }
+
+# resource "aws_route53_record" "www" {
+#   zone_id = var.route53_zone_id
+#   name    = var.route53_record_name
+#   type    = "CNAME"
+#   ttl     = "60"
+#   records = [module.aurora.cluster_endpoint]
+# }
+
+### TODO: I don't think the below rules actually do anything
+# RDS egress rule for cluster_security_group
+# resource "aws_security_group_rule" "db-egress-cluster_security_group" {
+#   type                     = "egress"
+#   description              = "mysql traffic"
+#   from_port                = 0
+#   to_port                  = 0
+#   protocol                 = "-1"
+#   source_security_group_id = module.aurora.security_group_id
+#   security_group_id        = var.cluster_security_group_id
+# }
+
+### TODO: I don't think the below rules actually do anything
+# RDS egress rule for worker_security_group
+# resource "aws_security_group_rule" "db-egress-worker_security_group" {
+#   type                     = "egress"
+#   description              = "mysql traffic"
+#   from_port                = 0
+#   to_port                  = 0
+#   protocol                 = "-1"
+#   source_security_group_id = module.aurora.security_group_id
+#   security_group_id        = var.worker_security_group_id
+# }
+
+### TODO: I don't think the below rules actually do anything
+# RDS egress rule for cluster_primary_security_group
+# resource "aws_security_group_rule" "db-egress-cluster_primary_security_group" {
+#   type                     = "egress"
+#   description              = "mysql traffic"
+#   from_port                = 0
+#   to_port                  = 0
+#   protocol                 = "-1"
+#   source_security_group_id = module.aurora.security_group_id
+#   security_group_id        = var.cluster_primary_security_group_id
+# }
