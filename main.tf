@@ -10,7 +10,7 @@ terraform {
 
 module "aurora" {
   source  = "terraform-aws-modules/rds-aurora/aws"
-  version = "6.1.4"
+  version = "9.9.0"
 
   name                       = var.name
   engine                     = var.engine
