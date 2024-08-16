@@ -52,6 +52,11 @@ module "aurora" {
   performance_insights_enabled    = var.performance_insights_enabled
   performance_insights_retention_period = var.performance_insights_retention_period
 
+  create_monitoring_role = var.create_monitoring_role
+  iam_role_path = var.iam_role_path
+  iam_role_permissions_boundary = var.iam_role_permissions_boundary
+
+
   tags                    = var.tags
   copy_tags_to_snapshot   = true
   backup_retention_period = var.backup_retention_period

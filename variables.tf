@@ -199,3 +199,21 @@ variable "performance_insights_retention_period" {
   type        = number
   default     = 7
 }
+
+variable "create_monitoring_role" {
+  description = "Create monitoring role"
+  type        = bool
+  default     = true
+}
+
+variable "iam_role_path" {
+  description = "IAM role path"
+  type        = string
+  default     = ""
+}
+
+variable "iam_role_permissions_boundary" {
+  description = "IAM role permissions boundary"
+  type        = string
+  default     = ""
+}
