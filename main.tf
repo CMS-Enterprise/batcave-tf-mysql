@@ -49,6 +49,8 @@ module "aurora" {
   db_parameter_group_name         = aws_db_parameter_group.db_parameter_group.id
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.db_cluster_parameter_group.id
   enabled_cloudwatch_logs_exports = var.enabled_cloudwatch_logs_exports
+  performance_insights_enabled    = var.performance_insights_enabled
+  performance_insights_retention_period = var.performance_insights_retention_period
 
   tags                    = var.tags
   copy_tags_to_snapshot   = true

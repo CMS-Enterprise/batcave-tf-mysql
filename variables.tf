@@ -188,3 +188,14 @@ variable "db_cluster_parameter_group_family" {
   default     = "aurora-mysql8.0" 
 }
 
+variable "performance_insights_enabled" {
+  description = "Enable performance insights"
+  type        = bool
+  default     = true 
+}
+
+variable "performance_insights_retention_period" {
+  description = "Performance insights retention period"
+  type        = number
+  default     = 7
+}
