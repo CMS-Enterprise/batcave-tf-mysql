@@ -72,28 +72,6 @@ variable "tags" {
   }
 }
 
-variable "route53_zone_id" {
-  type = string
-  default = null
-}
-
-variable "route53_record_name" {
-  type = string
-  default = null
-}
-
-variable "worker_security_group_id" {
-  type = string
-  default = null
-}
-variable "cluster_security_group_id" {
-  type = string
-  default = null
-}
-variable "cluster_primary_security_group_id" {
-  type = string
-  default = null
-}
 
 variable "apply_immediately" {
   type    = bool
