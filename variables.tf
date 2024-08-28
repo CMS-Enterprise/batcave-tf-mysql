@@ -35,6 +35,24 @@ variable "instance_class" {
   default = "db.r5.xlarge"
 }
 
+variable "create_reader_instance" {
+  description = "Whether to create a read replica instance"
+  type        = bool
+  default     = false
+}
+
+variable "reader_instance_class" {
+  description = "Instance class for the read replica"
+  type        = string
+  default     = "db.r5.large"
+}
+
+variable "publicly_accessible_replica" {
+  description = "Whether the replica instance should be publicly accessible"
+  type        = bool
+  default     = false
+}
+
 variable "allowed_security_groups" {
   type = list(string)
 }
