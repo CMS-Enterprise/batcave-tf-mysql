@@ -72,28 +72,6 @@ variable "tags" {
   }
 }
 
-variable "route53_zone_id" {
-  type = string
-  default = null
-}
-
-variable "route53_record_name" {
-  type = string
-  default = null
-}
-
-variable "worker_security_group_id" {
-  type = string
-  default = null
-}
-variable "cluster_security_group_id" {
-  type = string
-  default = null
-}
-variable "cluster_primary_security_group_id" {
-  type = string
-  default = null
-}
 variable "apply_immediately" {
   type    = bool
   default = false
@@ -197,19 +175,19 @@ variable "security_group_egress_rules_cidr_blocks_description" {
 variable "db_parameter_group_family" {
   description = "db parameter group family"
   type        = string
-  default     = "aurora-mysql8.0" 
+  default     = "aurora-mysql8.0"
 }
 
 variable "db_cluster_parameter_group_family" {
   description = "db parameter group family"
   type        = string
-  default     = "aurora-mysql8.0" 
+  default     = "aurora-mysql8.0"
 }
 
 variable "performance_insights_enabled" {
   description = "Enable performance insights"
   type        = bool
-  default     = true 
+  default     = true
 }
 
 variable "performance_insights_retention_period" {
