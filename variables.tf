@@ -35,6 +35,24 @@ variable "instance_class" {
   default = "db.r5.xlarge"
 }
 
+variable "create_reader_instance" {
+  description = "Whether to create a read replica instance"
+  type        = bool
+  default     = false
+}
+
+variable "reader_instance_class" {
+  description = "Instance class for the read replica"
+  type        = string
+  default     = "db.r5.large"
+}
+
+variable "publicly_accessible_replica" {
+  description = "Whether the replica instance should be publicly accessible"
+  type        = bool
+  default     = false
+}
+
 variable "allowed_security_groups" {
   type = list(string)
 }
@@ -54,28 +72,7 @@ variable "tags" {
   }
 }
 
-variable "route53_zone_id" {
-  type = string
-  default = null
-}
 
-variable "route53_record_name" {
-  type = string
-  default = null
-}
-
-variable "worker_security_group_id" {
-  type = string
-  default = null
-}
-variable "cluster_security_group_id" {
-  type = string
-  default = null
-}
-variable "cluster_primary_security_group_id" {
-  type = string
-  default = null
-}
 variable "apply_immediately" {
   type    = bool
   default = false
@@ -179,19 +176,19 @@ variable "security_group_egress_rules_cidr_blocks_description" {
 variable "db_parameter_group_family" {
   description = "db parameter group family"
   type        = string
-  default     = "aurora-mysql8.0" 
+  default     = "aurora-mysql8.0"
 }
 
 variable "db_cluster_parameter_group_family" {
   description = "db parameter group family"
   type        = string
-  default     = "aurora-mysql8.0" 
+  default     = "aurora-mysql8.0"
 }
 
 variable "performance_insights_enabled" {
   description = "Enable performance insights"
   type        = bool
-  default     = true 
+  default     = true
 }
 
 variable "performance_insights_retention_period" {

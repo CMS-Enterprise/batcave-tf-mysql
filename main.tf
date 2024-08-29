@@ -16,7 +16,18 @@ module "aurora" {
   engine                     = var.engine
   engine_version             = var.engine_version
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
-  instances = {
+
+  instances = var.create_reader_instance ? {
+    1 = {
+      instance_class      = var.instance_class
+      publicly_accessible = var.publicly_accessible
+    },
+    2 = {
+      instance_class      = var.reader_instance_class
+      publicly_accessible = var.publicly_accessible_replica
+      replica             = true
+    }
+    } : {
     1 = {
       instance_class      = var.instance_class
       publicly_accessible = var.publicly_accessible
@@ -46,14 +57,14 @@ module "aurora" {
   skip_final_snapshot = var.skip_final_snapshot
   snapshot_identifier = var.snapshot_identifier
 
-  db_parameter_group_name         = aws_db_parameter_group.db_parameter_group.id
-  db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.db_cluster_parameter_group.id
-  enabled_cloudwatch_logs_exports = var.enabled_cloudwatch_logs_exports
-  performance_insights_enabled    = var.performance_insights_enabled
+  db_parameter_group_name               = aws_db_parameter_group.db_parameter_group.id
+  db_cluster_parameter_group_name       = aws_rds_cluster_parameter_group.db_cluster_parameter_group.id
+  enabled_cloudwatch_logs_exports       = var.enabled_cloudwatch_logs_exports
+  performance_insights_enabled          = var.performance_insights_enabled
   performance_insights_retention_period = var.performance_insights_retention_period
 
-  create_monitoring_role = var.create_monitoring_role
-  iam_role_path = var.iam_role_path
+  create_monitoring_role        = var.create_monitoring_role
+  iam_role_path                 = var.iam_role_path
   iam_role_permissions_boundary = var.iam_role_permissions_boundary
 
 
